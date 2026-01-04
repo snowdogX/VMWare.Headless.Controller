@@ -1,0 +1,21 @@
+# VMware REST API 配置文件示例
+# 复制此文件为 config.yaml 并填入你的实际配置
+
+vmware:
+  # VMware Workstation/Player REST API 地址
+  host: "localhost"
+  port: 8697
+  
+  # 认证信息
+  username: "your_username"
+  password: "your_password"
+  
+  # API 版本
+  api_version: "v1"
+  
+  # 是否验证 SSL 证书
+  verify_ssl: false
+  
+  # 连接超时时间（秒）
+  timeout: 30
+
