@@ -4,15 +4,17 @@
 
 ## 功能特性
 
+- ✅ **图形界面（GUI）** - 用户友好的图形界面
+- ✅ **命令行界面（CLI）** - 支持脚本自动化
 - ✅ 列出所有虚拟机
 - ✅ 查看虚拟机详细状态
 - ✅ 启动虚拟机
 - ✅ 强制关闭虚拟机
 - ✅ 优雅关闭虚拟机（需要 VMware Tools）
 - ✅ 挂起虚拟机
-- ✅ 测试 API 连接
-- ✅ 彩色命令行输出
-- ✅ 表格化显示虚拟机列表
+- ✅ 自动刷新虚拟机状态
+- ✅ 实时操作日志
+- ✅ 彩色状态显示
 
 ## 系统要求
 
@@ -88,7 +90,38 @@ vmware:
 
 ## 使用方法
 
-### 测试连接
+### 图形界面（推荐）
+
+#### Windows
+
+双击运行 `start_gui.bat` 文件，或者在命令行中执行：
+
+```bash
+.\venv\Scripts\python.exe gui.py
+```
+
+#### Linux/Mac
+
+```bash
+./venv/bin/python gui.py
+```
+
+#### GUI 功能说明
+
+- **虚拟机列表**：显示所有虚拟机及其状态（绿色=运行中，红色=已关闭，橙色=已挂起）
+- **刷新按钮**：手动刷新虚拟机列表
+- **自动刷新**：勾选后每 5 秒自动刷新虚拟机状态
+- **虚拟机信息**：选择虚拟机后显示详细信息
+- **控制按钮**：
+  - ▶ 启动：启动选中的虚拟机
+  - ⏹ 强制关闭：立即关闭虚拟机（可能导致数据丢失）
+  - 🔌 优雅关闭：通过 VMware Tools 优雅关闭虚拟机
+  - ⏸ 挂起：挂起虚拟机
+- **操作日志**：显示所有操作的实时日志
+
+### 命令行界面
+
+#### 测试连接
 
 ```bash
 python main.py test
@@ -177,10 +210,12 @@ $ python main.py start VM002
 
 ```
 VMWare.Headless.Controller/
-├── main.py                 # 主程序入口
+├── gui.py                  # 图形界面程序
+├── main.py                 # 命令行程序入口
 ├── vmware_client.py        # VMware REST API 客户端
 ├── vm_manager.py           # 虚拟机管理器
 ├── config_loader.py        # 配置文件加载器
+├── start_gui.bat           # Windows GUI 启动脚本
 ├── requirements.txt        # Python 依赖
 ├── config.example.yaml     # 配置文件示例
 ├── config.yaml            # 实际配置文件（需自行创建）
