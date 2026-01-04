@@ -66,95 +66,95 @@ class VMManager:
     def power_on(self, vm_id: str) -> bool:
         """
         启动虚拟机
-        
+
         Args:
             vm_id: 虚拟机 ID
-            
+
         Returns:
             操作是否成功
         """
         try:
-            self.client.put(f'vms/{vm_id}/power', {'power_state': 'on'})
+            self.client.put(f'vms/{vm_id}/power', 'on')
             return True
         except Exception as e:
             raise Exception(f"启动虚拟机失败: {str(e)}")
-    
+
     def power_off(self, vm_id: str) -> bool:
         """
         关闭虚拟机
-        
+
         Args:
             vm_id: 虚拟机 ID
-            
+
         Returns:
             操作是否成功
         """
         try:
-            self.client.put(f'vms/{vm_id}/power', {'power_state': 'off'})
+            self.client.put(f'vms/{vm_id}/power', 'off')
             return True
         except Exception as e:
             raise Exception(f"关闭虚拟机失败: {str(e)}")
-    
+
     def shutdown(self, vm_id: str) -> bool:
         """
         优雅关闭虚拟机（需要 VMware Tools）
-        
+
         Args:
             vm_id: 虚拟机 ID
-            
+
         Returns:
             操作是否成功
         """
         try:
-            self.client.put(f'vms/{vm_id}/power', {'power_state': 'shutdown'})
+            self.client.put(f'vms/{vm_id}/power', 'shutdown')
             return True
         except Exception as e:
             raise Exception(f"优雅关闭虚拟机失败: {str(e)}")
-    
+
     def suspend(self, vm_id: str) -> bool:
         """
         挂起虚拟机
-        
+
         Args:
             vm_id: 虚拟机 ID
-            
+
         Returns:
             操作是否成功
         """
         try:
-            self.client.put(f'vms/{vm_id}/power', {'power_state': 'suspend'})
+            self.client.put(f'vms/{vm_id}/power', 'suspend')
             return True
         except Exception as e:
             raise Exception(f"挂起虚拟机失败: {str(e)}")
-    
+
     def pause(self, vm_id: str) -> bool:
         """
         暂停虚拟机
-        
+
         Args:
             vm_id: 虚拟机 ID
-            
+
         Returns:
             操作是否成功
         """
         try:
-            self.client.put(f'vms/{vm_id}/power', {'power_state': 'pause'})
+            self.client.put(f'vms/{vm_id}/power', 'pause')
             return True
         except Exception as e:
             raise Exception(f"暂停虚拟机失败: {str(e)}")
-    
+
     def unpause(self, vm_id: str) -> bool:
         """
         恢复暂停的虚拟机
-        
+
         Args:
             vm_id: 虚拟机 ID
-            
+
         Returns:
             操作是否成功
         """
         try:
-            self.client.put(f'vms/{vm_id}/power', {'power_state': 'unpause'})
+            self.client.put(f'vms/{vm_id}/power', 'unpause')
             return True
         except Exception as e:
             raise Exception(f"恢复虚拟机失败: {str(e)}")
